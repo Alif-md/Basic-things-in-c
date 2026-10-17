@@ -9,14 +9,17 @@ int guessgame(){
     srand(time(NULL));
 printf("welcome to the number guessing game\nenter to continue");
 getchar();
-getchar();
 printf("enter the maximum number \n");
 scanf("%d",&max);
 printf("enter the minumum number\n ");
 scanf("%d",&min);
+ if (min > max) {
+        printf("Minimum must not be greater than maximum.\n");
+        return;
+    }
  ans =(rand()%(max - min + 1))+min;
 do {
-printf("guess the number between %d and %d\n",max,min);
+printf("Guess the number between %d and %d\n",max,min);
 scanf("%d",&g);
 if(ans<g){
     printf("lower\n");
@@ -64,9 +67,12 @@ scanf("%d",&x);
 }
 while(x<1||x>3);
 if(x==rpc){
-    printf("you won!");
+    printf("It's a draw");
 
 }
+else if((x==1&rpc==3)||(x==2&rpc==1)||(x==3&rpc==2)){
+            printf("You won\n");
+           }
 else{
     printf("computer won");
 }
@@ -84,15 +90,15 @@ printf("|if you want to exit press 0  |\n");
 printf("+-----------------------------+\n");
 
 scanf("%d",&x);
-
+if (x==0){
+printf("goodbye");
+break;
 if (x<0||x>3){
     printf("error\n");
 }
-else if (x==0){
-printf("goodbye");
-break;
+
 }
-else if(x!=rpc){
+else if((x==2&rpc==3)||(x==3&rpc==1)||(x==1&rpc==2)){
     printf("computer won\nyou may try again\n");
     t++;
 
